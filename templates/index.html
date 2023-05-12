@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title> This is the home page </title>
+  <link rel="stylesheet" type= "text/css" href="{{ url_for('static',filename='index.css') }}">
+  <link rel="shortcut icon" href="{{ url_for('static',filename='icon.ico') }}">
+</head>
+<body>
+    <h1 id="main_title"> Ask Mate </h1>
+
+    <div class="topnav">
+        <a class="active" href="#home">Home</a>
+        <a href="question">List of questions</a>
+        <a href="add-question">Add question</a>
+        <a href="https://www.sadistic.pl/">Get me to a better place</a>
+        <div class="search-container">
+          <form action="{{ url_for('found_questions') }}" style="text-align: center;" method="POST">
+            <input type="text" placeholder="Search Question" name="search">
+            <button type="submit">Search</button>
+          </form>
+        </div>
+    </div>
+
+    
+    <div class="questions">
+      {% for question in latest_questions %}
+          <div class="question">
+              <div class="question-colored-box"></div>
+              <a href="question/{{ question.id }}"><h3 class="question-title"> {{ question.title }} </h3></a>
+              <p class="question-description"> {{ question.message }}</p>
+              <hr class="question-hr">
+              <p class="question-submission"> 
+                  Added: <span class="question-submission-span"> {{question.submission_time}} </span>
+              </p>
+          </div> 
+      {% endfor %}
+      </div>
+    <script>
+        var colors = ["#B0DAFF", "#E06469", "#E5BEEC", "#FDD36A", "#90B77D"];
+        var coloredBoxes = document.querySelectorAll(".question-colored-box");
+        for (var i = 0; i < coloredBoxes.length; i++) {
+            coloredBoxes[i].style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        }
+    </script>
+</body>
+</html>

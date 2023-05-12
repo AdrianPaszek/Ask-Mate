@@ -1,0 +1,12 @@
+body {
+  background-color: #e2efff;
+}
+.tabnav {
+  box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  background-color: #ddd;
+  color: black;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  color: #474e68;
+}

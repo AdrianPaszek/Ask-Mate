@@ -1,0 +1,51 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&subset=devanagari,latin-ext");
+
+head {
+  font-size: 50px;
+  font-family: "Courier New", Courier, monospace;
+  text-align: center;
+  color: #6d5d6e;
+}
+
+body {
+  background-color: #e2efff;
+  box-sizing: border-box;
+}
+#main_question {
+  text-align: center;
+  font-style: oblique;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 50px;
+  color: #6d5d6e;
+  overflow: hidden;
+  background-color: #b0daff;
+}
+.tabnav tr:hover {
+  box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  background-color: #ddd;
+  color: black;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  color: #474e68;
+}
+
+.tabcol {
+  color: rgb(58, 71, 58);
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+}
+.main_order {
+  font-family: "Poppins", sans-serif;
+  color: rgb(58, 71, 58);
+}
+.main_button {
+  border: solid 1px #020202;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  position: relative;
+  width: 5%;
+  margin: 0%;
+  background-color: rgb(202, 112, 112);
+}

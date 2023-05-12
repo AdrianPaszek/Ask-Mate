@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Add comment</title>
+</head>
+<body>
+<h1>Add new comment</h1>
+    <form action="{{ url_for('add_answer_comment', answer_id=answer_id, question_id=question_id) }}" method="POST">
+        <p>Your comment<br>
+            <textarea cols="50" rows="10" name="message" placeholder="Comment" autofocus required minlength="10"></textarea>
+        </p>
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+
+    <p>
+        <a href="{{ url_for('render_main_page', answer_id=answer_id, question_id=question_id) }}">Delete</a>
+    </p>
+
+</body>
+</html>
+
+<!-- ogarnac extendowanie templateów -->

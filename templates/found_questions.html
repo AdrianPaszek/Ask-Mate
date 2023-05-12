@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='found_questions_style.css') }}">
+    <title> Found Questions </title>
+</head>
+<body>
+    <div class="questions">
+    {% for item in x %}
+        <div class="question">
+            <div class="question-colored-box"></div>
+            <a href="question/{{ item.id }}"><h3 class="question-title"> {{ item.title }} </h3></a>
+            <p class="question-description"> {{ item.message }}</p>
+            <hr class="question-hr">
+            <p class="question-submission"> 
+                Added: <span class="question-submission-span"> {{item.submission_time}} </span>
+            </p>
+        </div> 
+    {% endfor %}
+    </div>
+    <script>
+        var colors = ["#B0DAFF", "#E06469", "#E5BEEC", "#FDD36A", "#90B77D"];
+    
+        var coloredBoxes = document.querySelectorAll(".question-colored-box");
+        for (var i = 0; i < coloredBoxes.length; i++) {
+            coloredBoxes[i].style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        }
+    </script>
+</body>
+</html>
