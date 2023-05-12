@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static',filename='show_question.css') }}"
+    />
+    <script
+      src="https://kit.fontawesome.com/64315007fe.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Show_question</title>
+    <style>
+      table,
+      th,
+      td {
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 id="main_question">Question: "{{ question[0]['title'] }}"</h1>
+    <div class="tabnav">
+      <table style="width: 50%">
+        <thead>
+          <tr></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="tabcol">
+              <a
+                href="{{ url_for('show_question', answer_id = question[0]['id'], question_id=question[0]['id'] )}}"
+                >{{ question[0]["message"] }}</a
+              >
+            </td>
+            <td class="tabcol">{{ question[0]["vote_number"] }}</td>
+            <td class="tabcol">{{ question[0]["submission_time"] }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    {% for item in answers %}
+    <p>{{ item.message }}</p>
+    {%endfor%}
+
+    <div class="actions">
+      <form
+        method="POST"
+        action="{{ url_for('show_question', question_id=question[0]['id']) }}"
+      >
+        <div class="vote_form">
+          <input
+            class="vote_form-like"
+            type="radio"
+            id="like"
+            name="vote_type"
+            value="like"
+            onchange="this.form.submit()"
+          />
+          <label for="like"> <button class="vote-btn">LIKE IT</button> </label>
+
+          <input
+            class="vote_form-like"
+            type="radio"
+            id="dislike"
+            name="vote_type"
+            value="dislike"
+            onchange="this.form.submit()"
+          />
+          <label for="dislike">
+            <button class="vote-btn2">DON'T LIKE IT</button>
+          </label>
+        </div>
+      </form>
+      <form class="delete_form" action=" " method="POST">
+        <button
+          class="delete_question-btn"
+          onclick="if(confirm('Czy na pewno chcesz to zrobić?')){ }"
+        >
+          Usuń pytanie
+        </button>
+      </form>
+
+      <form
+        class="add_for"
+        action="{{ url_for('route_new_answer', question_id=question[0]['id']) }}"
+        method="POST"
+      >
+        <button class="add_question-btn">Dodaj odpowiedź</button>
+      </form>
+    </div>
+  </body>
+</html>

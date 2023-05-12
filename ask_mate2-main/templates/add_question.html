@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>AskMate</title>
+</head>
+<body>
+<h1>Add new question</h1>
+        <form action="{{ url_for('add_question') }}" method="POST">
+            <p>Question title<br>
+            <input type="text" name="title" required minlength="10" size="51">
+            </p>
+
+            <p>Question message<br>
+                <TEXTAREA cols="50" rows="10" name="message" autofocus required minlength="10"></TEXTAREA>
+            </p>
+            <button type="submit">Submit</button>
+        </form>
+        <p><a href="{{ url_for('list_question') }}">Go back to main page</a></p>
+</body>
+</html>

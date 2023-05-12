@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contact Us</title>
+</head>
+<body>
+    <h1>Contact Us</h1>
+    <form method="POST" action="{{ url_for('filter') }}">
+        >
+        <label for="filter">Filter:</label>
+        <textarea id="filter" name="filter" required>{{data}}</textarea><br><br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

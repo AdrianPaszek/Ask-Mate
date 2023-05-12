@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static',filename='question.css') }}"
+    />
+    <script
+      src="https://kit.fontawesome.com/64315007fe.js"
+      crossorigin="anonymous"
+    ></script>
+<title>List Questions</title>
+</head>
+<body>
+  
+<h1 id="main_question">{{ title }}</h1>
+
+    {% if title == "List questions" %}
+    <p>
+        <form action="{{ url_for('list_question', order_by=order_by, order=order) }}" method="GET">
+            <label class= "main_order" for="order_by">Sort questions by: </label>
+            <select name="order_by" id="order_by">
+                {% for key, option in select_options.items() %}
+                    <option {% if key == order_by %}selected{% endif %}
+                            value="{{ key }}">{{ option }}</option>
+                {% endfor %}
+            </select>
+            <label class= "main_order" for="order">Order: </label>
+            <select name="order" id="order">
+                {% for option in order_options %}
+                    <option  {% if option == order %} selected {% endif %}
+                            value="{{ option }}">{{ option }}</option>
+                {% endfor %}
+            </select>
+            <p>
+                <button class="main_button"type="submit">Sort</button>
+            </p>
+        </form>
+    </p>
+    {% endif %}
+    <div class="tabnav">
+<table>
+    <thead>
+        <tr>
+            <th class="tabcol">Submission<br>time</th>
+            <th class="tabcol">Title</th>
+            <th class="tabcol">Message</th>
+            <th class="tabcol">View<br>number</th>
+            <th class="tabcol">Vote<br>number</th>
+
+            <th class="tabcol">Vote</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for row in data %}
+        <tr>
+            <td>{{ row["submission_time"] }}</td>
+            <td>{{ row["title"] }}</td>
+            <td>{{ row["message"] }}</td>
+            <td>{{ row["view_number"] }}</td>
+            <td>{{ row["vote_number"] }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</div>
+    {% if "Main page" == title %}
+        <p><a href="{{ url_for('list_question', order_by = 'submission_time', order = 'DESC') }}">List all questions!</a></p>
+
+
+    {% endif %}
+</body>
+</html>
